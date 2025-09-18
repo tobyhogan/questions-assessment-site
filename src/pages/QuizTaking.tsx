@@ -2,17 +2,26 @@ import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Quiz, QuizData, Question, QuizAnswer } from '../types/quiz';
 
+const QUESTIONS_PER_PAGE = 8;
+
 const QuizTaking = () => {
   const { quizId } = useParams<{ quizId: string }>();
   const navigate = useNavigate();
   
   const [quiz, setQuiz] = useState<Quiz | null>(null);
   const [questions, setQuestions] = useState<Question[]>([]);
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [currentPageIndex, setCurrentPageIndex] = useState(0);
   const [answers, setAnswers] = useState<QuizAnswer[]>([]);
-  const [selectedOption, setSelectedOption] = useState<number | null>(null);
+  const [pageAnswers, setPageAnswers] = useState<{ [questionId: number]: number }>({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+
+  // Calculate pages
+  const totalPages = Math.ceil(questions.length / QUESTIONS_PER_PAGE);
+  const currentPageQuestions = questions.slice(
+    currentPageIndex * QUESTIONS_PER_PAGE,
+    (currentPageIndex + 1) * QUESTIONS_PER_PAGE
+  );
 
   useEffect(() => {
     const fetchQuizData = async () => {
@@ -46,36 +55,60 @@ const QuizTaking = () => {
     fetchQuizData();
   }, [quizId]);
 
-  const handleAnswerSelect = (optionIndex: number) => {
-    setSelectedOption(optionIndex);
+  // Load existing answers for the current page
+  useEffect(() => {
+    const currentPageAnswerMap: { [questionId: number]: number } = {};
+    
+    currentPageQuestions.forEach(question => {
+      const existingAnswer = answers.find(a => a.questionId === question.id);
+      if (existingAnswer !== undefined) {
+        currentPageAnswerMap[question.id] = existingAnswer.selectedOption;
+      }
+    });
+    
+    setPageAnswers(currentPageAnswerMap);
+  }, [currentPageIndex, questions, answers]);
+
+  const handleAnswerSelect = (questionId: number, optionIndex: number) => {
+    setPageAnswers(prev => ({
+      ...prev,
+      [questionId]: optionIndex
+    }));
+  };
+
+  const areAllQuestionsAnswered = () => {
+    return currentPageQuestions.every(question => 
+      pageAnswers[question.id] !== undefined
+    );
   };
 
   const handleNext = () => {
-    if (selectedOption === null) return;
-
-    const currentQuestion = questions[currentQuestionIndex];
-    const newAnswer: QuizAnswer = {
-      questionId: currentQuestion.id,
-      selectedOption: selectedOption
-    };
-
-    // Update answers array
+    // Save current page answers
     const updatedAnswers = [...answers];
-    const existingAnswerIndex = updatedAnswers.findIndex(
-      a => a.questionId === currentQuestion.id
-    );
     
-    if (existingAnswerIndex >= 0) {
-      updatedAnswers[existingAnswerIndex] = newAnswer;
-    } else {
-      updatedAnswers.push(newAnswer);
-    }
+    currentPageQuestions.forEach(question => {
+      if (pageAnswers[question.id] !== undefined) {
+        const newAnswer: QuizAnswer = {
+          questionId: question.id,
+          selectedOption: pageAnswers[question.id]
+        };
+        
+        const existingAnswerIndex = updatedAnswers.findIndex(
+          a => a.questionId === question.id
+        );
+        
+        if (existingAnswerIndex >= 0) {
+          updatedAnswers[existingAnswerIndex] = newAnswer;
+        } else {
+          updatedAnswers.push(newAnswer);
+        }
+      }
+    });
     
     setAnswers(updatedAnswers);
 
-    if (currentQuestionIndex < questions.length - 1) {
-      setCurrentQuestionIndex(currentQuestionIndex + 1);
-      setSelectedOption(null);
+    if (currentPageIndex < totalPages - 1) {
+      setCurrentPageIndex(currentPageIndex + 1);
     } else {
       // Quiz complete - navigate to results
       navigate(`/results/${quizId}`, { 
@@ -88,13 +121,8 @@ const QuizTaking = () => {
   };
 
   const handlePrevious = () => {
-    if (currentQuestionIndex > 0) {
-      setCurrentQuestionIndex(currentQuestionIndex - 1);
-      
-      // Load previous answer if it exists
-      const currentQuestion = questions[currentQuestionIndex - 1];
-      const existingAnswer = answers.find(a => a.questionId === currentQuestion.id);
-      setSelectedOption(existingAnswer ? existingAnswer.selectedOption : null);
+    if (currentPageIndex > 0) {
+      setCurrentPageIndex(currentPageIndex - 1);
     }
   };
 
@@ -115,59 +143,85 @@ const QuizTaking = () => {
     );
   }
 
-  const currentQuestion = questions[currentQuestionIndex];
-  const progress = ((currentQuestionIndex + 1) / questions.length) * 100;
+  const overallProgress = ((currentPageIndex + 1) / totalPages) * 100;
+  const pageProgress = (Object.keys(pageAnswers).length / currentPageQuestions.length) * 100;
 
   return (
-    <div className="max-w-3xl mx-auto">
+    <div className="max-w-4xl mx-auto">
       {/* Header */}
       <div className="mb-8">
         <div className="flex justify-between items-center mb-4">
           <h1 className="text-2xl font-bold text-gray-900">{quiz.title}</h1>
           <span className="text-sm text-gray-500">
-            Question {currentQuestionIndex + 1} of {questions.length}
+            Page {currentPageIndex + 1} of {totalPages}
           </span>
         </div>
         
         {/* Progress Bar */}
-        <div className="w-full bg-gray-200 rounded-full h-2">
-          <div 
-            className="bg-blue-600 h-2 rounded-full transition-all duration-300"
-            style={{ width: `${progress}%` }}
-          ></div>
+        <div className="space-y-2">
+          <div className="flex justify-between text-xs text-gray-600">
+            <span>Overall Progress</span>
+            <span>{Math.round(overallProgress)}%</span>
+          </div>
+          <div className="w-full bg-gray-200 rounded-full h-2">
+            <div 
+              className="bg-blue-600 h-2 rounded-full transition-all duration-300"
+              style={{ width: `${overallProgress}%` }}
+            ></div>
+          </div>
+          
+          <div className="flex justify-between text-xs text-gray-600">
+            <span>Current Page Progress</span>
+            <span>{Math.round(pageProgress)}%</span>
+          </div>
+          <div className="w-full bg-gray-200 rounded-full h-1">
+            <div 
+              className="bg-green-500 h-1 rounded-full transition-all duration-300"
+              style={{ width: `${pageProgress}%` }}
+            ></div>
+          </div>
         </div>
       </div>
 
-      {/* Question Card */}
+      {/* Questions Grid */}
       <div className="bg-white rounded-lg shadow-md p-8 mb-8">
-        <h2 className="text-xl font-semibold text-gray-900 mb-6 leading-relaxed">
-          {currentQuestion.text}
-        </h2>
+        <div className="space-y-8">
+          {currentPageQuestions.map((question, questionIndex) => (
+            <div key={question.id} className="border-b border-gray-200 pb-8 last:border-b-0 last:pb-0">
+              <h2 className="text-lg font-semibold text-gray-900 mb-4">
+                <span className="text-blue-600 mr-2">
+                  {currentPageIndex * QUESTIONS_PER_PAGE + questionIndex + 1}.
+                </span>
+                {question.text}
+              </h2>
 
-        <div className="space-y-4">
-          {currentQuestion.options.map((option, index) => (
-            <button
-              key={index}
-              onClick={() => handleAnswerSelect(index)}
-              className={`w-full text-left p-4 rounded-lg border-2 transition-all duration-200 ${
-                selectedOption === index
-                  ? 'border-blue-500 bg-blue-50 text-blue-900'
-                  : 'border-gray-200 hover:border-gray-300 hover:bg-gray-50'
-              }`}
-            >
-              <div className="flex items-center">
-                <div className={`w-4 h-4 rounded-full border-2 mr-3 flex-shrink-0 ${
-                  selectedOption === index
-                    ? 'border-blue-500 bg-blue-500'
-                    : 'border-gray-300'
-                }`}>
-                  {selectedOption === index && (
-                    <div className="w-2 h-2 rounded-full bg-white m-0.5"></div>
-                  )}
-                </div>
-                <span className="text-gray-700">{option.text}</span>
+              <div className="space-y-3">
+                {question.options.map((option, optionIndex) => (
+                  <button
+                    key={optionIndex}
+                    onClick={() => handleAnswerSelect(question.id, optionIndex)}
+                    className={`w-full text-left p-4 rounded-lg border-2 transition-all duration-200 ${
+                      pageAnswers[question.id] === optionIndex
+                        ? 'border-blue-500 bg-blue-50 text-blue-900'
+                        : 'border-gray-200 hover:border-gray-300 hover:bg-gray-50'
+                    }`}
+                  >
+                    <div className="flex items-center">
+                      <div className={`w-4 h-4 rounded-full border-2 mr-3 flex-shrink-0 ${
+                        pageAnswers[question.id] === optionIndex
+                          ? 'border-blue-500 bg-blue-500'
+                          : 'border-gray-300'
+                      }`}>
+                        {pageAnswers[question.id] === optionIndex && (
+                          <div className="w-2 h-2 rounded-full bg-white m-0.5"></div>
+                        )}
+                      </div>
+                      <span className="text-gray-700">{option.text}</span>
+                    </div>
+                  </button>
+                ))}
               </div>
-            </button>
+            </div>
           ))}
         </div>
       </div>
@@ -176,26 +230,30 @@ const QuizTaking = () => {
       <div className="flex justify-between items-center">
         <button
           onClick={handlePrevious}
-          disabled={currentQuestionIndex === 0}
+          disabled={currentPageIndex === 0}
           className={`px-6 py-2 rounded-md font-medium transition-colors ${
-            currentQuestionIndex === 0
+            currentPageIndex === 0
               ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
               : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
           }`}
         >
-          Previous
+          Previous Page
         </button>
+
+        <div className="text-sm text-gray-600">
+          {Object.keys(pageAnswers).length} of {currentPageQuestions.length} questions answered
+        </div>
 
         <button
           onClick={handleNext}
-          disabled={selectedOption === null}
+          disabled={!areAllQuestionsAnswered()}
           className={`px-6 py-2 rounded-md font-medium transition-colors ${
-            selectedOption === null
+            !areAllQuestionsAnswered()
               ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
               : 'bg-blue-600 text-white hover:bg-blue-700'
           }`}
         >
-          {currentQuestionIndex < questions.length - 1 ? 'Next' : 'Finish Assessment'}
+          {currentPageIndex < totalPages - 1 ? 'Next Page' : 'Finish Assessment'}
         </button>
       </div>
     </div>
