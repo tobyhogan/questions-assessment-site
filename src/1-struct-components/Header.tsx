@@ -24,7 +24,7 @@ const Header = () => {
         
         {/* Logo/Title - with no-wrap */}
         <Link to="/" className="text-2xl font-bold text-gray-800 hover:text-blue-600 transition-colors whitespace-nowrap">
-          Personality Assessments
+          Assessment Quizzes
         </Link>
 
         {/* Desktop Navigation - hidden on mobile */}
