@@ -188,39 +188,77 @@ const QuizTaking = () => {
         <div className="space-y-8">
           {currentPageQuestions.map((question, questionIndex) => (
             <div key={question.id} className="border-b border-gray-200 pb-8 last:border-b-0 last:pb-0">
-              <h2 className="text-lg font-semibold text-gray-900 mb-4">
+              <h2 className="text-lg font-semibold text-gray-900 mb-6">
                 <span className="text-blue-600 mr-2">
                   {currentPageIndex * QUESTIONS_PER_PAGE + questionIndex + 1}.
                 </span>
                 {question.text}
               </h2>
 
-              <div className="space-y-3">
-                {question.options.map((option, optionIndex) => (
-                  <button
-                    key={optionIndex}
-                    onClick={() => handleAnswerSelect(question.id, optionIndex)}
-                    className={`w-full text-left p-4 rounded-lg border-2 transition-all duration-200 ${
-                      pageAnswers[question.id] === optionIndex
-                        ? 'border-blue-500 bg-blue-50 text-blue-900'
-                        : 'border-gray-200 hover:border-gray-300 hover:bg-gray-50'
-                    }`}
-                  >
-                    <div className="flex items-center">
-                      <div className={`w-4 h-4 rounded-full border-2 mr-3 flex-shrink-0 ${
-                        pageAnswers[question.id] === optionIndex
-                          ? 'border-blue-500 bg-blue-500'
-                          : 'border-gray-300'
-                      }`}>
-                        {pageAnswers[question.id] === optionIndex && (
-                          <div className="w-2 h-2 rounded-full bg-white m-0.5"></div>
-                        )}
+              {question.type === 'likert-scale' ? (
+                // Likert Scale Response
+                <div className="space-y-2">
+                  <div className="grid grid-cols-5 gap-2 mb-2">
+                    {[
+                      'Strongly Disagree',
+                      'Disagree', 
+                      'Neutral',
+                      'Agree',
+                      'Strongly Agree'
+                    ].map((label, optionIndex) => (
+                      <div key={optionIndex} className="text-center">
+                        <button
+                          onClick={() => handleAnswerSelect(question.id, optionIndex)}
+                          className={`w-full p-3 rounded-lg border-2 transition-all duration-200 mb-2 ${
+                            pageAnswers[question.id] === optionIndex
+                              ? 'border-blue-500 bg-blue-500 text-white'
+                              : 'border-gray-300 hover:border-blue-300 hover:bg-blue-50'
+                          }`}
+                        >
+                          <div className={`w-6 h-6 rounded-full border-2 mx-auto mb-1 ${
+                            pageAnswers[question.id] === optionIndex
+                              ? 'border-white bg-white'
+                              : 'border-gray-400'
+                          }`}>
+                            {pageAnswers[question.id] === optionIndex && (
+                              <div className="w-3 h-3 rounded-full bg-blue-500 m-0.5"></div>
+                            )}
+                          </div>
+                        </button>
+                        <span className="text-xs text-gray-600 font-medium">{label}</span>
                       </div>
-                      <span className="text-gray-700">{option.text}</span>
-                    </div>
-                  </button>
-                ))}
-              </div>
+                    ))}
+                  </div>
+                </div>
+              ) : (
+                // Multiple Choice (for backward compatibility)
+                <div className="space-y-3">
+                  {question.options?.map((option, optionIndex) => (
+                    <button
+                      key={optionIndex}
+                      onClick={() => handleAnswerSelect(question.id, optionIndex)}
+                      className={`w-full text-left p-4 rounded-lg border-2 transition-all duration-200 ${
+                        pageAnswers[question.id] === optionIndex
+                          ? 'border-blue-500 bg-blue-50 text-blue-900'
+                          : 'border-gray-200 hover:border-gray-300 hover:bg-gray-50'
+                      }`}
+                    >
+                      <div className="flex items-center">
+                        <div className={`w-4 h-4 rounded-full border-2 mr-3 flex-shrink-0 ${
+                          pageAnswers[question.id] === optionIndex
+                            ? 'border-blue-500 bg-blue-500'
+                            : 'border-gray-300'
+                        }`}>
+                          {pageAnswers[question.id] === optionIndex && (
+                            <div className="w-2 h-2 rounded-full bg-white m-0.5"></div>
+                          )}
+                        </div>
+                        <span className="text-gray-700">{option.text}</span>
+                      </div>
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
           ))}
         </div>

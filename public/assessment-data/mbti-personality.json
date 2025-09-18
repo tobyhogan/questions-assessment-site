@@ -3,383 +3,243 @@
   "questions": [
     {
       "id": 1,
-      "text": "I prefer to spend time:",
-      "type": "multiple-choice",
-      "options": [
-        {
-          "text": "With a large group of people",
-          "weights": { "EI": 2 }
-        },
-        {
-          "text": "With a few close friends",
-          "weights": { "EI": -1 }
-        },
-        {
-          "text": "Alone or with one other person",
-          "weights": { "EI": -2 }
-        }
-      ]
+      "text": "I have a limited social battery and need time alone to recharge",
+      "type": "likert-scale",
+      "weights": { "EI": -2 }
     },
     {
       "id": 2,
-      "text": "When making decisions, I typically:",
-      "type": "multiple-choice",
-      "options": [
-        {
-          "text": "Consider how it will affect others emotionally",
-          "weights": { "TF": -2 }
-        },
-        {
-          "text": "Analyze the logical pros and cons",
-          "weights": { "TF": 2 }
-        },
-        {
-          "text": "Go with my gut feeling",
-          "weights": { "TF": -1 }
-        }
-      ]
+      "text": "I prefer to think things through carefully before making decisions",
+      "type": "likert-scale",
+      "weights": { "TF": 1 }
     },
     {
       "id": 3,
-      "text": "I am more interested in:",
-      "type": "multiple-choice",
-      "options": [
-        {
-          "text": "What is actually happening",
-          "weights": { "SN": 2 }
-        },
-        {
-          "text": "What could possibly happen",
-          "weights": { "SN": -2 }
-        },
-        {
-          "text": "Both equally",
-          "weights": { "SN": 0 }
-        }
-      ]
+      "text": "I focus more on concrete facts and details than abstract possibilities",
+      "type": "likert-scale",
+      "weights": { "SN": 2 }
     },
     {
       "id": 4,
-      "text": "I prefer to:",
-      "type": "multiple-choice",
-      "options": [
-        {
-          "text": "Have things settled and decided",
-          "weights": { "JP": 2 }
-        },
-        {
-          "text": "Keep my options open",
-          "weights": { "JP": -2 }
-        },
-        {
-          "text": "It depends on the situation",
-          "weights": { "JP": 0 }
-        }
-      ]
+      "text": "I like to have things planned and settled rather than keeping options open",
+      "type": "likert-scale",
+      "weights": { "JP": 2 }
     },
     {
       "id": 5,
-      "text": "At parties, I:",
-      "type": "multiple-choice",
-      "options": [
-        {
-          "text": "Stay late and feel energized",
-          "weights": { "EI": 2 }
-        },
-        {
-          "text": "Leave early feeling drained",
-          "weights": { "EI": -2 }
-        },
-        {
-          "text": "Enjoy myself but need recovery time",
-          "weights": { "EI": -1 }
-        }
-      ]
+      "text": "I feel energized after spending time with groups of people",
+      "type": "likert-scale",
+      "weights": { "EI": 2 }
     },
     {
       "id": 6,
-      "text": "I am drawn to:",
-      "type": "multiple-choice",
-      "options": [
-        {
-          "text": "Practical, concrete information",
-          "weights": { "SN": 2 }
-        },
-        {
-          "text": "Theoretical, abstract concepts",
-          "weights": { "SN": -2 }
-        },
-        {
-          "text": "Both types of information",
-          "weights": { "SN": 0 }
-        }
-      ]
+      "text": "I am more interested in theoretical concepts than practical applications",
+      "type": "likert-scale",
+      "weights": { "SN": -2 }
     },
     {
       "id": 7,
-      "text": "When critiquing someone's work, I focus on:",
-      "type": "multiple-choice",
-      "options": [
-        {
-          "text": "Being tactful and encouraging",
-          "weights": { "TF": -2 }
-        },
-        {
-          "text": "Being honest and direct",
-          "weights": { "TF": 2 }
-        },
-        {
-          "text": "Finding a balance between both",
-          "weights": { "TF": 0 }
-        }
-      ]
+      "text": "I consider people's feelings when making decisions",
+      "type": "likert-scale",
+      "weights": { "TF": -2 }
     },
     {
       "id": 8,
-      "text": "I work best when I:",
-      "type": "multiple-choice",
-      "options": [
-        {
-          "text": "Plan ahead and stick to schedule",
-          "weights": { "JP": 2 }
-        },
-        {
-          "text": "Adapt and respond to what comes up",
-          "weights": { "JP": -2 }
-        },
-        {
-          "text": "Have some structure but flexibility",
-          "weights": { "JP": 0 }
-        }
-      ]
+      "text": "I prefer to adapt and respond to situations as they arise",
+      "type": "likert-scale",
+      "weights": { "JP": -2 }
     },
     {
       "id": 9,
-      "text": "I get my energy from:",
-      "type": "multiple-choice",
-      "options": [
-        {
-          "text": "Being around other people",
-          "weights": { "EI": 2 }
-        },
-        {
-          "text": "Having time to myself",
-          "weights": { "EI": -2 }
-        },
-        {
-          "text": "A mix of both",
-          "weights": { "EI": 0 }
-        }
-      ]
+      "text": "I enjoy being the center of attention in social situations",
+      "type": "likert-scale",
+      "weights": { "EI": 2 }
     },
     {
       "id": 10,
-      "text": "I prefer to learn through:",
-      "type": "multiple-choice",
-      "options": [
-        {
-          "text": "Hands-on experience and examples",
-          "weights": { "SN": 2 }
-        },
-        {
-          "text": "Concepts and theories first",
-          "weights": { "SN": -2 }
-        },
-        {
-          "text": "A combination of both approaches",
-          "weights": { "SN": 0 }
-        }
-      ]
+      "text": "I learn best through hands-on experience and real examples",
+      "type": "likert-scale",
+      "weights": { "SN": 2 }
     },
     {
       "id": 11,
-      "text": "In conflicts, I tend to:",
-      "type": "multiple-choice",
-      "options": [
-        {
-          "text": "Focus on maintaining harmony",
-          "weights": { "TF": -2 }
-        },
-        {
-          "text": "Focus on finding the truth/solution",
-          "weights": { "TF": 2 }
-        },
-        {
-          "text": "Try to balance both concerns",
-          "weights": { "TF": 0 }
-        }
-      ]
+      "text": "I prioritize maintaining harmony over being completely honest",
+      "type": "likert-scale",
+      "weights": { "TF": -2 }
     },
     {
       "id": 12,
-      "text": "My ideal weekend would be:",
-      "type": "multiple-choice",
-      "options": [
-        {
-          "text": "Planned activities with clear outcomes",
-          "weights": { "JP": 2 }
-        },
-        {
-          "text": "Spontaneous and open to possibilities",
-          "weights": { "JP": -2 }
-        },
-        {
-          "text": "Some planned activities but room for spontaneity",
-          "weights": { "JP": 0 }
-        }
-      ]
+      "text": "I feel stressed when my plans are disrupted or changed",
+      "type": "likert-scale",
+      "weights": { "JP": 2 }
     },
     {
       "id": 13,
-      "text": "I am more comfortable:",
-      "type": "multiple-choice",
-      "options": [
-        {
-          "text": "Speaking my thoughts out loud",
-          "weights": { "EI": 2 }
-        },
-        {
-          "text": "Thinking things through privately first",
-          "weights": { "EI": -2 }
-        },
-        {
-          "text": "It depends on the topic",
-          "weights": { "EI": 0 }
-        }
-      ]
+      "text": "I prefer to think out loud and discuss my ideas with others",
+      "type": "likert-scale",
+      "weights": { "EI": 2 }
     },
     {
       "id": 14,
-      "text": "I pay more attention to:",
-      "type": "multiple-choice",
-      "options": [
-        {
-          "text": "The details and specifics",
-          "weights": { "SN": 2 }
-        },
-        {
-          "text": "The big picture and patterns",
-          "weights": { "SN": -2 }
-        },
-        {
-          "text": "Both details and big picture",
-          "weights": { "SN": 0 }
-        }
-      ]
+      "text": "I am more interested in future possibilities than current realities",
+      "type": "likert-scale",
+      "weights": { "SN": -2 }
     },
     {
       "id": 15,
-      "text": "I make better decisions when I:",
-      "type": "multiple-choice",
-      "options": [
-        {
-          "text": "Consider the impact on people involved",
-          "weights": { "TF": -2 }
-        },
-        {
-          "text": "Focus on objective criteria",
-          "weights": { "TF": 2 }
-        },
-        {
-          "text": "Consider both people and logic",
-          "weights": { "TF": 0 }
-        }
-      ]
+      "text": "I make decisions based on logical analysis rather than personal values",
+      "type": "likert-scale",
+      "weights": { "TF": 2 }
     },
     {
       "id": 16,
-      "text": "I prefer projects that are:",
-      "type": "multiple-choice",
-      "options": [
-        {
-          "text": "Well-defined with clear deadlines",
-          "weights": { "JP": 2 }
-        },
-        {
-          "text": "Open-ended and exploratory",
-          "weights": { "JP": -2 }
-        },
-        {
-          "text": "Structured but allow for creativity",
-          "weights": { "JP": 0 }
-        }
-      ]
+      "text": "I enjoy having a flexible schedule with room for spontaneity",
+      "type": "likert-scale",
+      "weights": { "JP": -2 }
     },
     {
       "id": 17,
-      "text": "In group discussions, I:",
-      "type": "multiple-choice",
-      "options": [
-        {
-          "text": "Actively participate and share ideas",
-          "weights": { "EI": 2 }
-        },
-        {
-          "text": "Listen and contribute when asked",
-          "weights": { "EI": -2 }
-        },
-        {
-          "text": "Participate when I have something valuable to add",
-          "weights": { "EI": -1 }
-        }
-      ]
+      "text": "I feel drained after extended social interactions",
+      "type": "likert-scale",
+      "weights": { "EI": -2 }
     },
     {
       "id": 18,
-      "text": "I trust:",
-      "type": "multiple-choice",
-      "options": [
-        {
-          "text": "What I can see, hear, and experience",
-          "weights": { "SN": 2 }
-        },
-        {
-          "text": "My hunches and gut feelings",
-          "weights": { "SN": -2 }
-        },
-        {
-          "text": "Both experience and intuition",
-          "weights": { "SN": 0 }
-        }
-      ]
+      "text": "I trust concrete evidence more than hunches or gut feelings",
+      "type": "likert-scale",
+      "weights": { "SN": 2 }
     },
     {
       "id": 19,
-      "text": "I am motivated by:",
-      "type": "multiple-choice",
-      "options": [
-        {
-          "text": "Helping others and creating harmony",
-          "weights": { "TF": -2 }
-        },
-        {
-          "text": "Achieving goals and solving problems",
-          "weights": { "TF": 2 }
-        },
-        {
-          "text": "Both helping others and achieving goals",
-          "weights": { "TF": 0 }
-        }
-      ]
+      "text": "I am motivated by helping others and creating positive relationships",
+      "type": "likert-scale",
+      "weights": { "TF": -2 }
     },
     {
       "id": 20,
-      "text": "I feel more comfortable when:",
-      "type": "multiple-choice",
-      "options": [
-        {
-          "text": "Things are decided and settled",
-          "weights": { "JP": 2 }
-        },
-        {
-          "text": "Options remain open",
-          "weights": { "JP": -2 }
-        },
-        {
-          "text": "I have some closure but flexibility remains",
-          "weights": { "JP": 0 }
-        }
-      ]
+      "text": "I prefer to make quick decisions and move forward",
+      "type": "likert-scale",
+      "weights": { "JP": 2 }
+    },
+    {
+      "id": 21,
+      "text": "I actively seek out social gatherings and group activities",
+      "type": "likert-scale",
+      "weights": { "EI": 2 }
+    },
+    {
+      "id": 22,
+      "text": "I am drawn to innovative ideas and creative possibilities",
+      "type": "likert-scale",
+      "weights": { "SN": -2 }
+    },
+    {
+      "id": 23,
+      "text": "I value efficiency and objective criteria over personal considerations",
+      "type": "likert-scale",
+      "weights": { "TF": 2 }
+    },
+    {
+      "id": 24,
+      "text": "I like to keep my options open as long as possible before deciding",
+      "type": "likert-scale",
+      "weights": { "JP": -2 }
+    },
+    {
+      "id": 25,
+      "text": "I need quiet time to process my thoughts and feelings",
+      "type": "likert-scale",
+      "weights": { "EI": -2 }
+    },
+    {
+      "id": 26,
+      "text": "I pay close attention to details and specifics",
+      "type": "likert-scale",
+      "weights": { "SN": 2 }
+    },
+    {
+      "id": 27,
+      "text": "I consider the emotional impact of decisions on people involved",
+      "type": "likert-scale",
+      "weights": { "TF": -2 }
+    },
+    {
+      "id": 28,
+      "text": "I work better with clear deadlines and structured timelines",
+      "type": "likert-scale",
+      "weights": { "JP": 2 }
+    },
+    {
+      "id": 29,
+      "text": "I enjoy meeting new people and making new connections",
+      "type": "likert-scale",
+      "weights": { "EI": 2 }
+    },
+    {
+      "id": 30,
+      "text": "I am more interested in patterns and connections than individual facts",
+      "type": "likert-scale",
+      "weights": { "SN": -2 }
+    },
+    {
+      "id": 31,
+      "text": "I believe being direct and honest is more important than being diplomatic",
+      "type": "likert-scale",
+      "weights": { "TF": 2 }
+    },
+    {
+      "id": 32,
+      "text": "I thrive in unstructured environments with freedom to explore",
+      "type": "likert-scale",
+      "weights": { "JP": -2 }
+    },
+    {
+      "id": 33,
+      "text": "I prefer one-on-one conversations over group discussions",
+      "type": "likert-scale",
+      "weights": { "EI": -2 }
+    },
+    {
+      "id": 34,
+      "text": "I focus on practical, realistic solutions to problems",
+      "type": "likert-scale",
+      "weights": { "SN": 2 }
+    },
+    {
+      "id": 35,
+      "text": "I am naturally empathetic and consider others' feelings first",
+      "type": "likert-scale",
+      "weights": { "TF": -2 }
+    },
+    {
+      "id": 36,
+      "text": "I like to have closure and finish projects completely",
+      "type": "likert-scale",
+      "weights": { "JP": 2 }
+    },
+    {
+      "id": 37,
+      "text": "I gain energy from being around other people",
+      "type": "likert-scale",
+      "weights": { "EI": 2 }
+    },
+    {
+      "id": 38,
+      "text": "I enjoy exploring abstract theories and conceptual frameworks",
+      "type": "likert-scale",
+      "weights": { "SN": -2 }
+    },
+    {
+      "id": 39,
+      "text": "I prioritize logical consistency over personal harmony",
+      "type": "likert-scale",
+      "weights": { "TF": 2 }
+    },
+    {
+      "id": 40,
+      "text": "I prefer to stay flexible and adapt my approach as I go",
+      "type": "likert-scale",
+      "weights": { "JP": -2 }
     }
   ]
 }

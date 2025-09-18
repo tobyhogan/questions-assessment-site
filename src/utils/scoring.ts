@@ -15,14 +15,27 @@ export const calculateQuizScores = (
   answers.forEach(answer => {
     const question = questions.find(q => q.id === answer.questionId);
     if (question) {
-      const selectedOption = question.options[answer.selectedOption];
-      if (selectedOption && selectedOption.weights) {
-        // Add weights to corresponding scales
-        Object.entries(selectedOption.weights).forEach(([scaleId, weight]) => {
+      if (question.type === 'likert-scale' && question.weights) {
+        // For Likert scale: 0=Strongly Disagree, 1=Disagree, 2=Neutral, 3=Agree, 4=Strongly Agree
+        // Convert to multiplier: -2, -1, 0, 1, 2
+        const likertMultiplier = answer.selectedOption - 2;
+        
+        // Apply weights with Likert multiplier
+        Object.entries(question.weights).forEach(([scaleId, weight]) => {
           if (scores.hasOwnProperty(scaleId)) {
-            scores[scaleId] += weight;
+            scores[scaleId] += weight * likertMultiplier;
           }
         });
+      } else if (question.type === 'multiple-choice' && question.options) {
+        // For multiple choice (backward compatibility)
+        const selectedOption = question.options[answer.selectedOption];
+        if (selectedOption && selectedOption.weights) {
+          Object.entries(selectedOption.weights).forEach(([scaleId, weight]) => {
+            if (scores.hasOwnProperty(scaleId)) {
+              scores[scaleId] += weight;
+            }
+          });
+        }
       }
     }
   });

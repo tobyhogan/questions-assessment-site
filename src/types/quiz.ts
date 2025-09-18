@@ -16,8 +16,9 @@ export interface QuizOption {
 export interface Question {
   id: number;
   text: string;
-  type: 'multiple-choice';
-  options: QuizOption[];
+  type: 'likert-scale' | 'multiple-choice';
+  weights?: { [scaleId: string]: number }; // For Likert scale questions
+  options?: QuizOption[]; // For multiple choice questions
 }
 
 export interface Quiz {

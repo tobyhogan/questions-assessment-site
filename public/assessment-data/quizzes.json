@@ -5,7 +5,7 @@
       "title": "MBTI Personality Assessment",
       "description": "Discover your Myers-Briggs personality type through this comprehensive assessment.",
       "estimatedTime": "15-20 minutes",
-      "questionCount": 60,
+      "questionCount": 40,
       "scales": [
         {
           "id": "EI",
