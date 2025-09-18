@@ -3,6 +3,8 @@ import Header from './1-struct-components/Header'
 import HomePage from './pages/HomePage'
 import Page1 from './pages/Page1'
 import Page2 from './pages/Page2'
+import QuizTaking from './pages/QuizTaking'
+import QuizResults from './pages/QuizResults'
 
 function App() {
   return (
@@ -19,6 +21,8 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/page1" element={<Page1 />} />
             <Route path="/page2" element={<Page2 />} />
+            <Route path="/quiz/:quizId" element={<QuizTaking />} />
+            <Route path="/results/:quizId" element={<QuizResults />} />
           </Routes>
         </main>
       </div>

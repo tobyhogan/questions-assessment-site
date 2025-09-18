@@ -1,0 +1,385 @@
+{
+  "id": "mbti-personality",
+  "questions": [
+    {
+      "id": 1,
+      "text": "I prefer to spend time:",
+      "type": "multiple-choice",
+      "options": [
+        {
+          "text": "With a large group of people",
+          "weights": { "EI": 2 }
+        },
+        {
+          "text": "With a few close friends",
+          "weights": { "EI": -1 }
+        },
+        {
+          "text": "Alone or with one other person",
+          "weights": { "EI": -2 }
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "text": "When making decisions, I typically:",
+      "type": "multiple-choice",
+      "options": [
+        {
+          "text": "Consider how it will affect others emotionally",
+          "weights": { "TF": -2 }
+        },
+        {
+          "text": "Analyze the logical pros and cons",
+          "weights": { "TF": 2 }
+        },
+        {
+          "text": "Go with my gut feeling",
+          "weights": { "TF": -1 }
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "text": "I am more interested in:",
+      "type": "multiple-choice",
+      "options": [
+        {
+          "text": "What is actually happening",
+          "weights": { "SN": 2 }
+        },
+        {
+          "text": "What could possibly happen",
+          "weights": { "SN": -2 }
+        },
+        {
+          "text": "Both equally",
+          "weights": { "SN": 0 }
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "text": "I prefer to:",
+      "type": "multiple-choice",
+      "options": [
+        {
+          "text": "Have things settled and decided",
+          "weights": { "JP": 2 }
+        },
+        {
+          "text": "Keep my options open",
+          "weights": { "JP": -2 }
+        },
+        {
+          "text": "It depends on the situation",
+          "weights": { "JP": 0 }
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "text": "At parties, I:",
+      "type": "multiple-choice",
+      "options": [
+        {
+          "text": "Stay late and feel energized",
+          "weights": { "EI": 2 }
+        },
+        {
+          "text": "Leave early feeling drained",
+          "weights": { "EI": -2 }
+        },
+        {
+          "text": "Enjoy myself but need recovery time",
+          "weights": { "EI": -1 }
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "text": "I am drawn to:",
+      "type": "multiple-choice",
+      "options": [
+        {
+          "text": "Practical, concrete information",
+          "weights": { "SN": 2 }
+        },
+        {
+          "text": "Theoretical, abstract concepts",
+          "weights": { "SN": -2 }
+        },
+        {
+          "text": "Both types of information",
+          "weights": { "SN": 0 }
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "text": "When critiquing someone's work, I focus on:",
+      "type": "multiple-choice",
+      "options": [
+        {
+          "text": "Being tactful and encouraging",
+          "weights": { "TF": -2 }
+        },
+        {
+          "text": "Being honest and direct",
+          "weights": { "TF": 2 }
+        },
+        {
+          "text": "Finding a balance between both",
+          "weights": { "TF": 0 }
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "text": "I work best when I:",
+      "type": "multiple-choice",
+      "options": [
+        {
+          "text": "Plan ahead and stick to schedule",
+          "weights": { "JP": 2 }
+        },
+        {
+          "text": "Adapt and respond to what comes up",
+          "weights": { "JP": -2 }
+        },
+        {
+          "text": "Have some structure but flexibility",
+          "weights": { "JP": 0 }
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "text": "I get my energy from:",
+      "type": "multiple-choice",
+      "options": [
+        {
+          "text": "Being around other people",
+          "weights": { "EI": 2 }
+        },
+        {
+          "text": "Having time to myself",
+          "weights": { "EI": -2 }
+        },
+        {
+          "text": "A mix of both",
+          "weights": { "EI": 0 }
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "text": "I prefer to learn through:",
+      "type": "multiple-choice",
+      "options": [
+        {
+          "text": "Hands-on experience and examples",
+          "weights": { "SN": 2 }
+        },
+        {
+          "text": "Concepts and theories first",
+          "weights": { "SN": -2 }
+        },
+        {
+          "text": "A combination of both approaches",
+          "weights": { "SN": 0 }
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "text": "In conflicts, I tend to:",
+      "type": "multiple-choice",
+      "options": [
+        {
+          "text": "Focus on maintaining harmony",
+          "weights": { "TF": -2 }
+        },
+        {
+          "text": "Focus on finding the truth/solution",
+          "weights": { "TF": 2 }
+        },
+        {
+          "text": "Try to balance both concerns",
+          "weights": { "TF": 0 }
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "text": "My ideal weekend would be:",
+      "type": "multiple-choice",
+      "options": [
+        {
+          "text": "Planned activities with clear outcomes",
+          "weights": { "JP": 2 }
+        },
+        {
+          "text": "Spontaneous and open to possibilities",
+          "weights": { "JP": -2 }
+        },
+        {
+          "text": "Some planned activities but room for spontaneity",
+          "weights": { "JP": 0 }
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "text": "I am more comfortable:",
+      "type": "multiple-choice",
+      "options": [
+        {
+          "text": "Speaking my thoughts out loud",
+          "weights": { "EI": 2 }
+        },
+        {
+          "text": "Thinking things through privately first",
+          "weights": { "EI": -2 }
+        },
+        {
+          "text": "It depends on the topic",
+          "weights": { "EI": 0 }
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "text": "I pay more attention to:",
+      "type": "multiple-choice",
+      "options": [
+        {
+          "text": "The details and specifics",
+          "weights": { "SN": 2 }
+        },
+        {
+          "text": "The big picture and patterns",
+          "weights": { "SN": -2 }
+        },
+        {
+          "text": "Both details and big picture",
+          "weights": { "SN": 0 }
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "text": "I make better decisions when I:",
+      "type": "multiple-choice",
+      "options": [
+        {
+          "text": "Consider the impact on people involved",
+          "weights": { "TF": -2 }
+        },
+        {
+          "text": "Focus on objective criteria",
+          "weights": { "TF": 2 }
+        },
+        {
+          "text": "Consider both people and logic",
+          "weights": { "TF": 0 }
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "text": "I prefer projects that are:",
+      "type": "multiple-choice",
+      "options": [
+        {
+          "text": "Well-defined with clear deadlines",
+          "weights": { "JP": 2 }
+        },
+        {
+          "text": "Open-ended and exploratory",
+          "weights": { "JP": -2 }
+        },
+        {
+          "text": "Structured but allow for creativity",
+          "weights": { "JP": 0 }
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "text": "In group discussions, I:",
+      "type": "multiple-choice",
+      "options": [
+        {
+          "text": "Actively participate and share ideas",
+          "weights": { "EI": 2 }
+        },
+        {
+          "text": "Listen and contribute when asked",
+          "weights": { "EI": -2 }
+        },
+        {
+          "text": "Participate when I have something valuable to add",
+          "weights": { "EI": -1 }
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "text": "I trust:",
+      "type": "multiple-choice",
+      "options": [
+        {
+          "text": "What I can see, hear, and experience",
+          "weights": { "SN": 2 }
+        },
+        {
+          "text": "My hunches and gut feelings",
+          "weights": { "SN": -2 }
+        },
+        {
+          "text": "Both experience and intuition",
+          "weights": { "SN": 0 }
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "text": "I am motivated by:",
+      "type": "multiple-choice",
+      "options": [
+        {
+          "text": "Helping others and creating harmony",
+          "weights": { "TF": -2 }
+        },
+        {
+          "text": "Achieving goals and solving problems",
+          "weights": { "TF": 2 }
+        },
+        {
+          "text": "Both helping others and achieving goals",
+          "weights": { "TF": 0 }
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "text": "I feel more comfortable when:",
+      "type": "multiple-choice",
+      "options": [
+        {
+          "text": "Things are decided and settled",
+          "weights": { "JP": 2 }
+        },
+        {
+          "text": "Options remain open",
+          "weights": { "JP": -2 }
+        },
+        {
+          "text": "I have some closure but flexibility remains",
+          "weights": { "JP": 0 }
+        }
+      ]
+    }
+  ]
+}

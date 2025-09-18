@@ -4,8 +4,6 @@ import { useState } from 'react'
 // Centralized navigation links configuration
 const navigationLinks = [
   { path: '/', label: 'Home' },
-  { path: '/page1', label: 'Page 1' },
-  { path: '/page2', label: 'Page 2' },
 ]
 
 const Header = () => {
@@ -26,7 +24,7 @@ const Header = () => {
         
         {/* Logo/Title - with no-wrap */}
         <Link to="/" className="text-2xl font-bold text-gray-800 hover:text-blue-600 transition-colors whitespace-nowrap">
-          Assessment Quiz Site
+          Personality Assessments
         </Link>
 
         {/* Desktop Navigation - hidden on mobile */}

@@ -1,0 +1,59 @@
+{
+  "quizzes": [
+    {
+      "id": "mbti-personality",
+      "title": "MBTI Personality Assessment",
+      "description": "Discover your Myers-Briggs personality type through this comprehensive assessment.",
+      "estimatedTime": "15-20 minutes",
+      "questionCount": 60,
+      "scales": [
+        {
+          "id": "EI",
+          "name": "Extraversion vs Introversion",
+          "description": "How you direct your energy and attention",
+          "positiveLabel": "Extraversion (E)",
+          "negativeLabel": "Introversion (I)"
+        },
+        {
+          "id": "SN",
+          "name": "Sensing vs Intuition", 
+          "description": "How you take in information",
+          "positiveLabel": "Sensing (S)",
+          "negativeLabel": "Intuition (N)"
+        },
+        {
+          "id": "TF",
+          "name": "Thinking vs Feeling",
+          "description": "How you make decisions",
+          "positiveLabel": "Thinking (T)",
+          "negativeLabel": "Feeling (F)"
+        },
+        {
+          "id": "JP",
+          "name": "Judging vs Perceiving",
+          "description": "How you approach the outside world",
+          "positiveLabel": "Judging (J)",
+          "negativeLabel": "Perceiving (P)"
+        }
+      ],
+      "personalityTypes": {
+        "INTJ": "The Architect",
+        "INTP": "The Thinker", 
+        "ENTJ": "The Commander",
+        "ENTP": "The Debater",
+        "INFJ": "The Advocate",
+        "INFP": "The Mediator",
+        "ENFJ": "The Protagonist", 
+        "ENFP": "The Campaigner",
+        "ISTJ": "The Logistician",
+        "ISFJ": "The Protector",
+        "ESTJ": "The Executive",
+        "ESFJ": "The Consul",
+        "ISTP": "The Virtuoso",
+        "ISFP": "The Adventurer",
+        "ESTP": "The Entrepreneur",
+        "ESFP": "The Entertainer"
+      }
+    }
+  ]
+}
